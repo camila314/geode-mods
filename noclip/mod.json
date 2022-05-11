@@ -1,0 +1,16 @@
+{
+  "geode": 1,
+  "version": "v1.0.0",
+  "id": "com.camila.noclip",
+  "name": "noclip",
+  "developer": "camila",
+  "description": "noclip",
+  "details": null,
+  "binary": "noclip",
+  "dependencies": [
+    {
+      "id": "com.geode.api",
+      "required": true
+    }
+  ]
+}
