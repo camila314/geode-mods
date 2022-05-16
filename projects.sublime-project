@@ -35,6 +35,14 @@
 					"shell_cmd": "make -j4 Stuff",
 				},
 				{
+					"name": "FpsBypass",
+					"shell_cmd": "make -j4 FpsBypass",
+				},
+				{
+					"name": "NoProgress",
+					"shell_cmd": "make -j4 NoProgress",
+				},
+				{
 					"name": "QoL",
 					"shell_cmd": "make -j4 QoL",
 				},
@@ -48,7 +56,7 @@
 				},
 				{
 					"name": "noclip",
-					"shell_cmd": "make -j4 noclip",
+					"shell_cmd": "make -j4 noclip"
 				},
 			],
 			"working_dir": "${project_path}/build",

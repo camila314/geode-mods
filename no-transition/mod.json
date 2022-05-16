@@ -1,0 +1,16 @@
+{
+  "geode": 1,
+  "version": "v1.0.0",
+  "id": "com.camila.notransition",
+  "name": "No Transition",
+  "developer": "camila",
+  "description": "no more transition, i took them all for myself",
+  "details": null,
+  "binary": "NoTransition",
+  "dependencies": [
+    {
+      "id": "com.geode.api",
+      "required": true
+    }
+  ]
+}

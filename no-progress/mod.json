@@ -1,0 +1,16 @@
+{
+  "geode": 1,
+  "version": "v1.0.0",
+  "id": "com.camila.noprogress",
+  "name": "No Progressbar",
+  "developer": "camila",
+  "description": "no progress bar",
+  "details": null,
+  "binary": "NoProgress",
+  "dependencies": [
+    {
+      "id": "com.geode.api",
+      "required": true
+    }
+  ]
+}

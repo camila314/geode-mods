@@ -1,0 +1,16 @@
+{
+  "geode": 1,
+  "version": "v1.0.0",
+  "id": "com.camila.fpsbypass",
+  "name": "Fps Bypass",
+  "developer": "camila",
+  "description": "its fps bypass",
+  "details": null,
+  "binary": "FpsBypass",
+  "dependencies": [
+    {
+      "id": "com.geode.api",
+      "required": true
+    }
+  ]
+}
