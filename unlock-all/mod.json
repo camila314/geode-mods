@@ -1,5 +1,5 @@
 {
-  "geode": 1,
+  "geode": "v0.1.0",
   "version": "v1.0.0",
   "id": "com.camila.unlockall",
   "name": "Unlock All",
@@ -8,9 +8,5 @@
   "details": null,
   "binary": "UnlockAll",
   "dependencies": [
-    {
-      "id": "com.geode.api",
-      "required": true
-    }
   ]
 }
