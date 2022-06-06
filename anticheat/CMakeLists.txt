@@ -2,11 +2,17 @@ cmake_minimum_required(VERSION 3.3.0)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-project(fps2 VERSION 1.0.0)
+project(anticheat VERSION 1.0.0)
 
+# Use GLOB_RECURSE instead of GLOB
+# to recursively add all source files 
+# under src/ 
+file(GLOB SOURCES
+	src/*.cpp
+)
 
 # Set up the mod binary
-add_library(${PROJECT_NAME} SHARED src/main.mm src/UI.cpp src/BypassCallback.mm)
+add_library(${PROJECT_NAME} SHARED ${SOURCES})
 set_target_properties(${PROJECT_NAME} PROPERTIES PREFIX "")
 
 # Find Geode. If you've installed 
@@ -22,8 +28,6 @@ find_path(GEODE_SDK_PATH
 	REQUIRED
 )
 include(${GEODE_SDK_PATH}/Geode.cmake)
-
-target_link_libraries(${PROJECT_NAME} "-framework OpenGL -framework Cocoa")
 
 # Set up this project as a Geode mod.
 # This will include all the required 

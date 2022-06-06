@@ -1,11 +1,11 @@
 {
 	"geode": "v0.1.0",
 	"version": "v1.0.0",
-	"id": "com.camila314.fps-bypass",
-	"name": "FPS Bypass",
+	"id": "com.camila314.anticheat",
+	"name": "anticheat",
 	"developer": "camila314",
-	"description": "fps bypass for mac",
-	"binary": "fps2",
+	"description": "anticheat",
+	"binary": "anticheat",
 	"dependencies": [
 		{
 			"id": "com.geode.api",

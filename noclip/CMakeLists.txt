@@ -15,4 +15,8 @@ find_path(GEODE_SDK_PATH
 )
 include(${GEODE_SDK_PATH}/Geode.cmake)
 
-setup_geode_mod()
+setup_geode_mod(BUILD_CODEGEN)
+
+
+get_property(CXX_FLAGS TARGET ${PROJECT_NAME} PROPERTY CXX_FLAGS)
+message(STATUS "ok but " ${CXX_FLAGS})

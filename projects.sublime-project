@@ -31,8 +31,16 @@
 					"shell_cmd": "make -j4 rebuild_cache",
 				},
 				{
+					"name": "CodegenRun",
+					"shell_cmd": "make -j4 CodegenRun",
+				},
+				{
 					"name": "Stuff",
 					"shell_cmd": "make -j4 Stuff",
+				},
+				{
+					"name": "Codegen",
+					"shell_cmd": "make -j4 Codegen",
 				},
 				{
 					"name": "FpsBypass",
@@ -41,6 +49,10 @@
 				{
 					"name": "NoProgress",
 					"shell_cmd": "make -j4 NoProgress",
+				},
+				{
+					"name": "NoTransition",
+					"shell_cmd": "make -j4 NoTransition",
 				},
 				{
 					"name": "QoL",
@@ -53,6 +65,14 @@
 				{
 					"name": "UnlockAll",
 					"shell_cmd": "make -j4 UnlockAll",
+				},
+				{
+					"name": "anticheat",
+					"shell_cmd": "make -j4 anticheat",
+				},
+				{
+					"name": "fmt",
+					"shell_cmd": "make -j4 fmt",
 				},
 				{
 					"name": "noclip",
