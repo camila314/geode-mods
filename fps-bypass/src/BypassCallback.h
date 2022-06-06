@@ -1,7 +1,8 @@
 #include <Geode.hpp>
 #include <Cocoa/Cocoa.h>
 
-inline double GLOBAL_FPS = 60.0;
+extern double GLOBAL_FPS;
+extern bool GLOBAL_ENABLED;
 
 @interface BypassCallback : NSObject
     + (BypassCallback*)sharedCallback;

@@ -2,10 +2,15 @@
 
 using namespace cocos2d;
 
-// the original drawScene calls CCScheduler::update, but we do that in another timer.
-class CustomDirector : public cocos2d::CCDirector {
+class $(CCDirector) {
  public:
-    void drawScene2() {
+    void drawScene() {
+        // Limit CCScheduler::update() since we do that in the physics timer
+        // GLOBAL_ENABLED so the initialzing doesn't cause a softlock
+        if (!m_bPaused & !GLOBAL_ENABLED) {
+            m_pScheduler->update(m_fDeltaTime);
+        }
+        
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         if (m_pNextScene) {
             setNextScene();
@@ -29,10 +34,6 @@ class CustomDirector : public cocos2d::CCDirector {
             m_pobOpenGLView->swapBuffers();
         }
     }
-
-    int getFrames() {
-        return m_uTotalFrames;
-    }
 };
 
 @implementation BypassCallback {
@@ -47,7 +48,7 @@ class CustomDirector : public cocos2d::CCDirector {
         return shared;
     }
 
-    // update CCScheduler and dispatch events
+    // Run CCScheduler::update(). We must keep track of our own frametimes
     - (void)physicsFired:(id)ok {
         double currentTime = [[NSDate date] timeIntervalSince1970];
         double dt;
@@ -60,19 +61,5 @@ class CustomDirector : public cocos2d::CCDirector {
         lastFrameTime = currentTime;
 
         CCDirector::sharedDirector()->getScheduler()->update(dt);
-        [(id)[NSClassFromString(@"CCEventDispatcher") sharedDispatcher] dispatchQueuedEvents];
-    }
-
-    - (void)renderFired:(id)ok {
-            NSOpenGLView* openGLView = NSApp.mainWindow.contentView;
-            NSOpenGLContext* glContext = openGLView.openGLContext;
-
-            [glContext makeCurrentContext];
-            CGLLockContext(glContext.CGLContextObj);
-            
-            ((CustomDirector*)cocos2d::CCDirector::sharedDirector())->drawScene2();
-
-            [glContext flushBuffer];
-            CGLUnlockContext(glContext.CGLContextObj);
     }
 @end

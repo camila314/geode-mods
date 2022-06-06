@@ -25,7 +25,7 @@ class $(fpsThing, MoreVideoOptionsLayer) {
         auto menu = m_buttonMenu;
 
         auto btn = ButtonSprite::create("Set FPS", 50, 0, 0.7, 0, "bigFont.fnt", "GJ_button_01.png", 30);
-        auto mitem = CCMenuItemSpriteExtra::create(btn, btn, this, menu_selector(fpsThing::onSet));
+        auto mitem = CCMenuItemSpriteExtra::create(btn, btn, this, menu_selector(fpsThing::onClose));
         mitem->setPosition(ccp(0, -50));
 
         auto input = CCTextInputNode::create(50, 50, "FPS", 12, "bigFont.fnt");
@@ -45,20 +45,19 @@ class $(fpsThing, MoreVideoOptionsLayer) {
 
         return true;
     } 
-    void onSet(cocos2d::CCObject* m) {
-        auto input = this->*fps;
-        int fpsVal = atoi(input->getString());
-        if (fpsVal < 1)
-            return;
-
-        GLOBAL_FPS = fpsVal;
-        AppDelegate::get()->setAnimationInterval(GLOBAL_FPS);
-    }
 
     void onClose(cocos2d::CCObject* m) {
         auto input = this->*fps;
         input->onClickTrackNode(false);
-
         MoreVideoOptionsLayer::onClose(m);
+
+        int fpsVal = atoi(input->getString());
+        if (fpsVal < 1)
+            return;
+
+        if (GLOBAL_FPS != fpsVal) {
+            GLOBAL_FPS = fpsVal;
+            AppDelegate::get()->setAnimationInterval(GLOBAL_FPS);
+        }
     }
 };

@@ -5,11 +5,7 @@
 	"name": "FPS Bypass",
 	"developer": "camila314",
 	"description": "fps bypass for mac",
-	"binary": "fps2",
+	"binary": "FPSBypass",
 	"dependencies": [
-		{
-			"id": "com.geode.api",
-			"required": true
-		}
 	]
 }
