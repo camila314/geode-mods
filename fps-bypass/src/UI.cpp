@@ -3,16 +3,7 @@
 using namespace cocos2d;
 
 extern double GLOBAL_FPS;
-
-// ac bypass
-class $(PlayLayer) {
-    void update(float dt) {
-        auto lt = m_level->m_levelType;
-        m_level->m_levelType = GJLevelType::Local;
-        PlayLayer::update(dt);
-        m_level->m_levelType = lt;
-    }
-};
+extern void updateFPS();
 
 // the UI
 class $(fpsThing, MoreVideoOptionsLayer) {
@@ -31,6 +22,7 @@ class $(fpsThing, MoreVideoOptionsLayer) {
         auto input = CCTextInputNode::create(50, 50, "FPS", 12, "bigFont.fnt");
         input->setPosition(ccp(0, 0));
         input->setLabelPlaceholderColor(ccc3(120, 170, 240));
+        input->setString(std::to_string((int)GLOBAL_FPS).c_str());
 
         auto box = extension::CCScale9Sprite::create("square02b_small.png");
         box->setOpacity(100);
@@ -51,13 +43,12 @@ class $(fpsThing, MoreVideoOptionsLayer) {
         input->onClickTrackNode(false);
         MoreVideoOptionsLayer::onClose(m);
 
-        int fpsVal = atoi(input->getString());
+        int fpsVal = atof(input->getString());
         if (fpsVal < 1)
             return;
-
-        if (GLOBAL_FPS != fpsVal) {
+        if (fpsVal != GLOBAL_FPS) {
             GLOBAL_FPS = fpsVal;
-            AppDelegate::get()->setAnimationInterval(GLOBAL_FPS);
+            updateFPS();
         }
     }
 };

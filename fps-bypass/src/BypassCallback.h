@@ -4,8 +4,9 @@
 extern double GLOBAL_FPS;
 extern bool GLOBAL_ENABLED;
 
-@interface BypassCallback : NSObject
+/*@interface BypassCallback : NSObject
     + (BypassCallback*)sharedCallback;
     - (void)renderFired: (id)ok;
     - (void)physicsFired:(id)ok;
 @end
+*/
