@@ -3,30 +3,27 @@
  */
 #include <Geode.hpp>
 
-/**
- * Brings cocos2d and all Geode namespaces 
- * to the current scope.
- */
 USE_GEODE_NAMESPACE();
 
-/**
- * `$modify` lets you extend and modify GD's 
- * classes; to hook a function in Geode, 
- * simply $modify the class and write a new 
- * function definition with the signature of 
- * the one you want to hook.
- */
-class $modify(MenuLayer) {
-	/**
-	 * MenuLayer::onMoreGames is a GD function, 
-	 * so we hook it by simply writing its name 
-	 * inside a $modified MenuLayer class.
-	 * 
-	 * Note that for all hooks, your signature 
-	 * has to match exactly - `bool onMoreGames` 
-	 * would not place a hook!
-	 */
-	void onMoreGames(CCObject*) {
-		FLAlertLayer::create("Geode", "Hello from my custom mod!", "OK")->show(); 
-	} 
+class Patch2 : public Patch {
+ public:
+ 	Patch2(byte_array patch, byte_array original, uintptr_t address) : Patch() {
+ 		m_patch = patch;
+ 		m_original = original;
+ 		m_address = (void*)address;
+ 		m_owner = Mod::get();
+ 	}
 };
+
+GEODE_API void GEODE_DLL geode_load(Mod* m) {
+	Patch2* lol = new Patch2({'\xeb'}, {'\x76'}, base::get() + 0x18D811);
+	lol->apply();
+	Patch2* lol2 = new Patch2({'\xeb'}, {'\x76'}, base::get() + 0x18D7D9);
+	lol2->apply();
+
+
+	Patch2* lol3 = new Patch2({'\x90', '\x90', '\x90', '\x90', '\x90', '\x90'}, {'\x90', '\x90', '\x90', '\x90', '\x90', '\x90'}, base::get() + 0x25332);
+	lol3->apply();
+	Patch2* lol4 = new Patch2({'\x90', '\x90', '\x90', '\x90', '\x90', '\x90'}, {'\x90', '\x90', '\x90', '\x90', '\x90', '\x90'}, base::get() + 0x2533f);
+	lol4->apply();
+}

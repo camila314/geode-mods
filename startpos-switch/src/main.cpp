@@ -8,6 +8,7 @@ using namespace cocos2d;
 std::vector<std::pair<StartPosObject*, CCPoint>> g_startPoses;
 int g_startPosIndex;
 CCLabelBMFont* g_startPosText;
+bool g_toReset;
 
 class $(MyPlayLayer, PlayLayer) {
 	void vfDChk() {}
@@ -52,6 +53,10 @@ class $(MyPlayLayer, PlayLayer) {
 			m_startPos = g_startPoses[g_startPosIndex].first;
 			m_playerStartPosition = g_startPoses[g_startPosIndex].second;
 		}
+
+		resetLevel();
+		if (m_isPaused)
+			GameSoundManager::sharedManager()->stopBackgroundMusic();
 	}
 
 	void resetLevel() {

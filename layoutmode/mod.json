@@ -1,0 +1,10 @@
+{
+	"geode": "v0.1.0",
+	"version": "v1.0.0",
+	"id": "com.camila314.layoutmode",
+	"name": "Layout Mode",
+	"developer": "camila314",
+	"description": "'Layout Mode' toggle, letting you remove all decoration and make all solid objects visible",
+	"binary": "nodeco",
+	"dependencies": []
+}

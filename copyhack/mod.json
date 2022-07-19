@@ -1,0 +1,15 @@
+{
+	"geode": "v0.1.0",
+	"version": "v1.0.0",
+	"id": "com.camila314.copyhack",
+	"name": "copyhack",
+	"developer": "camila314",
+	"description": "so popular",
+	"binary": "copyhack",
+	"dependencies": [
+		{
+			"id": "geode.api",
+			"required": true
+		}
+	]
+}

@@ -16,5 +16,3 @@ find_path(GEODE_SDK_PATH
 include(${GEODE_SDK_PATH}/Geode.cmake)
 
 setup_geode_mod()
-
-create_geode_file(${PROJECT_NAME})

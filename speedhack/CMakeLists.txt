@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.3.0)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-project(scalehack VERSION 1.0.0)
+project(speedhack VERSION 1.0.0)
 
 # Use GLOB_RECURSE instead of GLOB
 # to recursively add all source files 
@@ -27,9 +27,6 @@ find_path(GEODE_SDK_PATH
 	DOC "Geode SDK path."
 	REQUIRED
 )
-
-target_compile_options(${PROJECT_NAME} PUBLIC -Os)
-
 include(${GEODE_SDK_PATH}/Geode.cmake)
 
 # Set up this project as a Geode mod.

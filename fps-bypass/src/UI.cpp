@@ -5,6 +5,16 @@ using namespace cocos2d;
 extern double GLOBAL_FPS;
 extern void updateFPS();
 
+// ac bypass
+class $(PlayLayer) {
+    void update(float dt) {
+        auto lt = m_level->m_levelType;
+        m_level->m_levelType = GJLevelType::Local;
+        PlayLayer::update(dt);
+        m_level->m_levelType = lt;
+    }
+};
+
 // the UI
 class $(fpsThing, MoreVideoOptionsLayer) {
     field<CCTextInputNode*> fps;
@@ -48,7 +58,7 @@ class $(fpsThing, MoreVideoOptionsLayer) {
             return;
         if (fpsVal != GLOBAL_FPS) {
             GLOBAL_FPS = fpsVal;
-            updateFPS();
+            CCApplication::sharedApplication()->setAnimationInterval(fpsVal);
         }
     }
 };

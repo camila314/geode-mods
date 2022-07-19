@@ -1,0 +1,15 @@
+{
+	"geode": "v0.1.0",
+	"version": "v1.0.0",
+	"id": "com.camila314.discodrpc",
+	"name": "DiscodRPC",
+	"developer": "camila314",
+	"description": "discord rpc for gd",
+	"binary": "DiscodRPC",
+	"dependencies": [
+		{
+			"id": "com.geode.api",
+			"required": true
+		}
+	]
+}
