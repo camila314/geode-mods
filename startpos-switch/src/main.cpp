@@ -1,4 +1,5 @@
-#include <Geode.hpp>
+#include <Geode/Geode.hpp>
+#include <Geode/Modify.hpp>
 #include <vector>
 
 USE_GEODE_NAMESPACE();
@@ -18,7 +19,7 @@ class $(MyPlayLayer, PlayLayer) {
 		if (g_startPoses.empty() || m_isPracticeMode)
 			return;
 
-		geode::log << std::to_string(g_startPosIndex);
+		log::debug(g_startPosIndex);
 
 		if (increment) {
 			g_startPosIndex++;

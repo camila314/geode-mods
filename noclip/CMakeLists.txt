@@ -1,22 +1,22 @@
 cmake_minimum_required(VERSION 3.3.0)
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 project(noclip VERSION 1.0.0)
 
-add_library(${PROJECT_NAME} SHARED main.cpp)
-set_target_properties(${PROJECT_NAME} PROPERTIES PREFIX "")
-
-find_path(GEODE_SDK_PATH
-  NAMES Geode.cmake
-  PATHS $ENV{GEODE_SUITE}/sdk /Users/Shared/Geode/suite/sdk /usr/local/geode/sdk
-  DOC "Geode SDK path."
-  REQUIRED
+# Use GLOB_RECURSE instead of GLOB
+# to recursively add all source files 
+# under src/ 
+file(GLOB SOURCES
+  *.cpp
 )
-include(${GEODE_SDK_PATH}/Geode.cmake)
 
-setup_geode_mod(BUILD_CODEGEN)
+# Set up the mod binary
+add_library(${PROJECT_NAME} SHARED ${SOURCES})
 
 
-get_property(CXX_FLAGS TARGET ${PROJECT_NAME} PROPERTY CXX_FLAGS)
-message(STATUS "ok but " ${CXX_FLAGS})
+set(GEODE_LINK_NIGHTLY ON)
+add_subdirectory(/Users/jakrillis/tmp/geode/real /Users/jakrillis/tmp/geode/real/build)
+
+target_link_libraries(${PROJECT_NAME} geode-sdk)
+create_geode_file(${PROJECT_NAME})
