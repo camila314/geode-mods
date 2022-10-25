@@ -1,4 +1,5 @@
-#include <Geode.hpp>
+#include <Geode/modify/PlayLayer.hpp>
+#include <Geode/modify/PlayerObject.hpp>
 
 class $(PlayLayer) {
 

@@ -1,4 +1,4 @@
-#include <Geode.hpp>
+#include <Geode/modify/HardStreak.hpp>
 
 class $(HardStreak) {
 	void updateStroke(float a) {

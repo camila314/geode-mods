@@ -1,6 +1,7 @@
 // credit to alk1m
 
-#include <Geode.hpp>
+#include <Geode/Geode.hpp>
+#include <Geode/Modify.hpp>
 #include <sstream>
 
 class FPSOverlay : public cocos2d::CCNode {

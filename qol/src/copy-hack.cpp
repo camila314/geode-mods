@@ -1,4 +1,4 @@
-#include <Geode.hpp>
+#include <Geode/modify/LevelInfoLayer.hpp>
 USE_GEODE_NAMESPACE();
 
 class $(LevelInfoLayer) {

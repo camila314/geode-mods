@@ -1,12 +1,9 @@
 {
-  "geode": "v0.1.0",
+  "geode": "v0.4.0",
   "version": "v1.0.0",
-  "id": "com.camila.noprogress",
+  "id": "com.camila314.noprogress",
   "name": "No Progressbar",
   "developer": "camila",
   "description": "no progress bar",
-  "details": null,
-  "binary": "NoProgress",
-  "dependencies": [
-  ]
+  "details": null
 }

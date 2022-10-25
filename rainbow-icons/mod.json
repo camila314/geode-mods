@@ -1,12 +1,9 @@
 {
-  "geode": "v0.1.0",
+  "geode": "v0.4.0",
   "version": "v1.0.0",
-  "id": "com.camila.rainbowicons",
+  "id": "com.camila314.rainbowicons",
   "name": "Rainbow Icons",
   "developer": "camila",
   "description": "icon rotates rainbow colors",
-  "details": null,
-  "binary": "RainbowIcons",
-  "dependencies": [
-  ]
+  "details": null
 }

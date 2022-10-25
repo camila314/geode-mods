@@ -1,4 +1,6 @@
-#include <Geode.hpp>
+#include <Geode/modify/GameObject.hpp>
+#include <Geode/modify/PauseLayer.hpp>
+#include <Geode/Bindings.hpp>
 #include "DebugWrapper.hpp"
 
 USE_GEODE_NAMESPACE();
@@ -22,12 +24,12 @@ cocos2d::CCNode* getChildByFnRecursive(cocos2d::CCNode* node, std::function<bool
 bool g_layoutMode = false;
 
 class $(MyGameObject, GameObject) {
-	field<bool> m_realVisible;
-	field<cocos2d::_ccColor3B> m_realColor;
+	bool m_realVisible;
+	cocos2d::_ccColor3B m_realColor;
 
 	void setVisible(bool v) {
 		if (g_layoutMode) {
-			this->*m_realVisible = v;
+			m_fields->m_realVisible = v;
 
 			if (m_objectType == GameObjectType::Decoration) {
 				GameObject::setVisible(false);
@@ -39,7 +41,7 @@ class $(MyGameObject, GameObject) {
 	}
 
 	void revertVisibility() {
-		setVisible(this->*m_realVisible);
+		setVisible(m_fields->m_realVisible);
 	}
 
 	void setOpacity(unsigned char g) {

@@ -1,4 +1,3 @@
-#include <Geode.hpp>
 #include <Cocoa/Cocoa.h>
 
 extern double GLOBAL_FPS;

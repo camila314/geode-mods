@@ -1,4 +1,4 @@
-#include <Geode.hpp>
+#include <Geode/modify/CCTransitionFade.hpp>
 using namespace cocos2d;
 
 class $(CCTransitionFade) {

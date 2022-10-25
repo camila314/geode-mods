@@ -1,4 +1,5 @@
-#include <Geode.hpp>
+#include <Geode/Loader.hpp>
+#include <Geode/Bindings.hpp>
 #include <Cocoa/Cocoa.h>
 #include "BypassCallback.h"
 

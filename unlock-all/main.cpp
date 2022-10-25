@@ -1,4 +1,4 @@
-#include <Geode.hpp>
+#include <Geode/modify/GameManager.hpp>
 
 // it's that simple
 class $modify(GameManager) {

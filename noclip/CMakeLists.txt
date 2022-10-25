@@ -14,9 +14,5 @@ file(GLOB SOURCES
 # Set up the mod binary
 add_library(${PROJECT_NAME} SHARED ${SOURCES})
 
-
-set(GEODE_LINK_NIGHTLY ON)
-add_subdirectory(/Users/jakrillis/tmp/geode/real /Users/jakrillis/tmp/geode/real/build)
-
 target_link_libraries(${PROJECT_NAME} geode-sdk)
 create_geode_file(${PROJECT_NAME})

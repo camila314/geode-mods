@@ -1,6 +1,8 @@
-#include <Geode.hpp>
+#include <Geode/modify/PlayLayer.hpp>
+#include <Geode/modify/MoreVideoOptionsLayer.hpp>
+#include <Geode/modify/Field.hpp>
 
-using namespace cocos2d;
+USE_GEODE_NAMESPACE();
 
 extern double GLOBAL_FPS;
 extern void updateFPS();
@@ -16,9 +18,8 @@ class $(PlayLayer) {
 };
 
 // the UI
+CCTextInputNode* s_fps;
 class $(fpsThing, MoreVideoOptionsLayer) {
-    field<CCTextInputNode*> fps;
-
     bool init() {
         MoreVideoOptionsLayer::init();
 
@@ -43,13 +44,13 @@ class $(fpsThing, MoreVideoOptionsLayer) {
         m_buttonMenu->addChild(box);
         m_buttonMenu->addChild(input);
 
-        this->*fps = input;
+        s_fps = input;
 
         return true;
     } 
 
     void onClose(cocos2d::CCObject* m) {
-        auto input = this->*fps;
+        auto input = s_fps;
         input->onClickTrackNode(false);
         MoreVideoOptionsLayer::onClose(m);
 

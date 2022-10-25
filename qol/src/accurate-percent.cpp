@@ -1,4 +1,4 @@
-#include <Geode.hpp>
+#include <Geode/modify/PlayLayer.hpp>
 
 class $(PlayLayer) {
 	void updateProgressbar() {

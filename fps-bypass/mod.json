@@ -1,11 +1,8 @@
 {
-	"geode": "v0.1.0",
+	"geode": "v0.4.0",
 	"version": "v1.0.0",
 	"id": "com.camila314.fps-bypass",
 	"name": "FPS Bypass",
 	"developer": "camila314",
-	"description": "fps bypass for mac",
-	"binary": "FPSBypass",
-	"dependencies": [
-	]
+	"description": "fps bypass for mac"
 }

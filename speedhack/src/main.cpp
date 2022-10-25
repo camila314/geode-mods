@@ -1,4 +1,5 @@
-#include <Geode.hpp>
+#include <Geode/modify/PauseLayer.hpp>
+#include <Geode/modify/PlayLayer.hpp>
 #include "DebugWrapper.hpp"
 
 USE_GEODE_NAMESPACE();

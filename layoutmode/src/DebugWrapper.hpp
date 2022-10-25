@@ -1,4 +1,4 @@
-#include <Geode.hpp>
+#include <Geode/Geode.hpp>
 
 USE_GEODE_NAMESPACE();
 
@@ -73,7 +73,7 @@ class DebugWrapper : public CCMenu {
 
 	void ccTouchEnded(CCTouch* touch, CCEvent*) override {
 		m_eState = kCCMenuStateWaiting;
-		geode::log << m_selectedChild->getPosition();
+		log::debug(m_selectedChild->getPosition());
 		m_selectedChild = nullptr;
 	}
 };

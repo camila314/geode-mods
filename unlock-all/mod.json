@@ -1,12 +1,8 @@
 {
-  "geode": "v0.1.0",
+  "geode": "v0.4.0",
   "version": "v1.0.0",
-  "id": "com.camila.unlockall",
+  "id": "com.camila314.unlockall",
   "name": "Unlock All",
-  "developer": "camila",
-  "description": "unlock all things (not permanent)",
-  "details": null,
-  "binary": "UnlockAll",
-  "dependencies": [
-  ]
+  "developer": "camila314",
+  "description": "unlock all things (not permanent)"
 }

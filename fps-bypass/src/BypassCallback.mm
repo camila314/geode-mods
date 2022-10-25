@@ -1,3 +1,4 @@
+#include <Geode/modify/CCDirector.hpp>
 #include "BypassCallback.h"
 
 using namespace cocos2d;
