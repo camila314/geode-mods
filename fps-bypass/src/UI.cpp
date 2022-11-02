@@ -1,24 +1,40 @@
 #include <Geode/modify/PlayLayer.hpp>
 #include <Geode/modify/MoreVideoOptionsLayer.hpp>
 #include <Geode/modify/Field.hpp>
+#include "global.h"
 
 USE_GEODE_NAMESPACE();
 
-extern double GLOBAL_FPS;
-extern void updateFPS();
-
 // ac bypass
+static bool s_paused = false;
 class $(PlayLayer) {
-    void update(float dt) {
-        auto lt = m_level->m_levelType;
-        m_level->m_levelType = GJLevelType::Local;
-        PlayLayer::update(dt);
-        m_level->m_levelType = lt;
-    }
+	bool init(GJGameLevel* gl) {
+		PlayLayer::init(gl);
+		s_paused = false;
+		return true;
+	}
+
+	void resume() {
+		PlayLayer::resume();
+		s_paused = false;
+	}
+
+	void onQuit() {
+        double percent = (m_player1->getPositionX() / m_levelLength) * 100;
+
+		if (s_paused || percent >= 95) {
+			PlayLayer::onQuit();
+		}
+	}
+
+	void pauseGame(bool b) {
+		PlayLayer::pauseGame(b);
+		s_paused = true;
+	}
 };
 
+
 // the UI
-CCTextInputNode* s_fps;
 class $(fpsThing, MoreVideoOptionsLayer) {
     bool init() {
         MoreVideoOptionsLayer::init();
@@ -33,7 +49,8 @@ class $(fpsThing, MoreVideoOptionsLayer) {
         auto input = CCTextInputNode::create(50, 50, "FPS", 12, "bigFont.fnt");
         input->setPosition(ccp(0, 0));
         input->setLabelPlaceholderColor(ccc3(120, 170, 240));
-        input->setString(std::to_string((int)GLOBAL_FPS).c_str());
+        input->setString(std::to_string((int)g_fps).c_str());
+        input->setTag(0x3141);
 
         auto box = extension::CCScale9Sprite::create("square02b_small.png");
         box->setOpacity(100);
@@ -44,22 +61,21 @@ class $(fpsThing, MoreVideoOptionsLayer) {
         m_buttonMenu->addChild(box);
         m_buttonMenu->addChild(input);
 
-        s_fps = input;
-
         return true;
     } 
 
     void onClose(cocos2d::CCObject* m) {
-        auto input = s_fps;
+        auto input = reinterpret_cast<CCTextInputNode*>(m_buttonMenu->getChildByTag(0x3141));
+
         input->onClickTrackNode(false);
         MoreVideoOptionsLayer::onClose(m);
 
         int fpsVal = atof(input->getString());
         if (fpsVal < 1)
             return;
-        if (fpsVal != GLOBAL_FPS) {
-            GLOBAL_FPS = fpsVal;
-            CCApplication::sharedApplication()->setAnimationInterval(fpsVal);
+        if (fpsVal != g_fps) {
+            g_fps = fpsVal;
+            updateFPS();
         }
     }
 };

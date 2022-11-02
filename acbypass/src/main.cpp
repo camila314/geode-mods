@@ -3,5 +3,8 @@
 USE_GEODE_NAMESPACE();
 
 class $(PlayLayer) {
-	void destroyPlayer(PlayerObject*, GameObject*) {}
+	void update(float dt) {
+		m_antiCheatPassed = true;
+		PlayLayer::update(dt);
+	}
 };
