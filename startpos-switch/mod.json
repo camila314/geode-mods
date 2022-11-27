@@ -1,9 +1,11 @@
 {
 	"geode": "v0.4.0",
 	"version": "v1.0.0",
-	"id": "com.camila314.startpos-switcher",
+	"id": "camila314.startswitcher",
 	"name": "StartPos Switcher",
 	"developer": "camila314",
 	"description": "Use arrow keys to switch between start positions in a level.",
-	"dependencies": []
+	"dependencies": [
+		{"id": "camila314.acbypass", "version": "v1.0.0", "required": true}
+	]
 }

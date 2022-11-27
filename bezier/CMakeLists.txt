@@ -2,13 +2,9 @@ cmake_minimum_required(VERSION 3.3.0)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-project(acbypass VERSION 1.0.0)
+project(bezier VERSION 1.0.0)
 
-file(GLOB SOURCES
-	src/*.cpp
-)
-
-add_library(${PROJECT_NAME} SHARED ${SOURCES})
+add_library(${PROJECT_NAME} SHARED src/BezierLayer.cpp)
 
 if(${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_CURRENT_SOURCE_DIR})
     if (NOT DEFINED ENV{GEODE_SDK})
@@ -17,9 +13,9 @@ if(${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_CURRENT_SOURCE_DIR})
         message(STATUS "Found Geode: $ENV{GEODE_SDK}")
     endif()
 
-    set(GEODE_LINK_NIGHTLY ON)
     add_subdirectory($ENV{GEODE_SDK} $ENV{GEODE_SDK}/build)
 endif()
 
+include(api/API.cmake)
 target_link_libraries(${PROJECT_NAME} geode-sdk)
 create_geode_file(${PROJECT_NAME})

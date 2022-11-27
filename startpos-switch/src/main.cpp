@@ -9,6 +9,7 @@ using namespace cocos2d;
 std::vector<std::pair<StartPosObject*, CCPoint>> g_startPoses;
 int g_startPosIndex;
 CCLabelBMFont* g_startPosText;
+bool g_toReset;
 
 class $(MyPlayLayer, PlayLayer) {
 	void vfDChk() {}

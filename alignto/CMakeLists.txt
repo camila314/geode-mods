@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.3.0)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-project(acbypass VERSION 1.0.0)
+project(alignto VERSION 1.0.0)
 
 file(GLOB SOURCES
 	src/*.cpp
@@ -17,7 +17,7 @@ if(${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_CURRENT_SOURCE_DIR})
         message(STATUS "Found Geode: $ENV{GEODE_SDK}")
     endif()
 
-    set(GEODE_LINK_NIGHTLY ON)
+    set(GEODE_LINK_NIGHTLY On)
     add_subdirectory($ENV{GEODE_SDK} $ENV{GEODE_SDK}/build)
 endif()
 
