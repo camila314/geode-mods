@@ -1,16 +1,11 @@
 {
-  "geode": 1,
+  "geode": "v0.4.0",
   "version": "v1.0.0",
-  "id": "com.camila.noclip",
-  "name": "noclip",
-  "developer": "camila",
-  "description": "noclip",
-  "details": null,
-  "binary": "noclip",
+  "id": "camila314.noclip",
+  "name": "Noclip",
+  "developer": "camila314",
+  "description": "Ignore damage",
   "dependencies": [
-    {
-      "id": "com.geode.api",
-      "required": true
-    }
+    {"id": "camila314.acbypass", "version": "v1.0.0", "required": true}
   ]
 }
