@@ -104,7 +104,7 @@ jobs:
       
       - name: Merge
         shell: bash
-        run: ./merge.sh
+        run: ${{ github.workspace }}/merge.sh
 
       - uses: actions/upload-artifact@v3
         with:
