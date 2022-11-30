@@ -16,10 +16,10 @@ if(${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_CURRENT_SOURCE_DIR})
     else()
         message(STATUS "Found Geode: $ENV{GEODE_SDK}")
     endif()
-endif()
 
-set(GEODE_LINK_NIGHTLY On)
-add_subdirectory($ENV{GEODE_SDK} $ENV{GEODE_SDK}/build)
+    set(GEODE_LINK_NIGHTLY On)
+    add_subdirectory($ENV{GEODE_SDK} $ENV{GEODE_SDK}/build)
+endif()
 
 target_link_libraries(${PROJECT_NAME} geode-sdk)
 create_geode_file(${PROJECT_NAME})
