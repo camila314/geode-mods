@@ -41,7 +41,7 @@ jobs:
       with:
         submodules: recursive
         repository: geode-sdk/geode
-        # ref: v0.4.8
+        ref: v0.6.1
         path: ${{ env.GEODE_SDK }}
      
     - uses: ilammy/msvc-dev-cmd@v1
