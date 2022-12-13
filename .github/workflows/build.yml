@@ -54,7 +54,7 @@ jobs:
         mkdir bin
         mkdir bin/nightly
         cd bin/nightly
-        curl -L https://github.com/geode-sdk/geode/releases/download/Nightly/geode-nightly-${{ matrix.config.platform_suffix }}.zip -o geode-sdk.zip
+        curl -L https://github.com/geode-sdk/geode/releases/download/v0.6.1/geode-v0.6.1-${{ matrix.config.platform_suffix }}.zip -o geode-sdk.zip
         tar -xf geode-sdk.zip
 
     - name: Configure CMake

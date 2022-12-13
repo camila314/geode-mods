@@ -1,4 +1,4 @@
-#include <Geode/Geode.hpp>
+//#include <Geode/Geode.hpp>
 #include <Geode/Modify.hpp>
 #include <vector>
 
@@ -11,6 +11,7 @@ int g_startPosIndex;
 CCLabelBMFont* g_startPosText;
 bool g_toReset;
 
+
 class $(MyPlayLayer, PlayLayer) {
 	void vfDChk() {}
 
@@ -20,6 +21,7 @@ class $(MyPlayLayer, PlayLayer) {
 			return;
 
 		log::debug(g_startPosIndex);
+
 
 		if (increment) {
 			g_startPosIndex++;
@@ -32,8 +34,6 @@ class $(MyPlayLayer, PlayLayer) {
 		} else if (g_startPosIndex < -1) {
 			g_startPosIndex = g_startPoses.size() - 1;
 		}
-
-
 
 		auto colorPulseBegin = CCTintTo::create(0.0, 0, 255, 0);
 		auto colorPulseEnd = CCTintTo::create(0.5, 255, 255, 255);

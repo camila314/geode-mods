@@ -26,5 +26,7 @@ endif()
 # Set up the mod binary
 add_library(${PROJECT_NAME} SHARED ${SOURCES})
 
+target_compile_options(${PROJECT_NAME} PUBLIC -ftime-trace)
+
 target_link_libraries(${PROJECT_NAME} geode-sdk)
 create_geode_file(${PROJECT_NAME})

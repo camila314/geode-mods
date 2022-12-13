@@ -21,7 +21,9 @@ class $(MySearchLayer, LevelSearchLayer) {
 			return strncmp(thing->getString(), "Filters", 7) == 0;
 		})->removeFromParentAndCleanup(true);
 
-		findFirstChildRecursive<CCLabelBMFont>(this, [](CCLabelBMFont* thing) {
+		log::info("yeah!");
+
+		/*findFirstChildRecursive<CCLabelBMFont>(this, [](CCLabelBMFont* thing) {
 			return strncmp(thing->getString(), "Quick Search", 12) == 0;
 		})->removeFromParentAndCleanup(true);
 
@@ -61,7 +63,7 @@ class $(MySearchLayer, LevelSearchLayer) {
 		challenge_button->setPosition(reinterpret_cast<CCNode*>(menu->getChildren()->objectAtIndex(1))->getPosition() + ccp(0, 35));
 
 		menu->addChild(demon_button);
-		menu->addChild(challenge_button);
+		menu->addChild(challenge_button);*/
 
 		return true;
 	}
