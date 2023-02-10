@@ -21,9 +21,9 @@ class $(MySearchLayer, LevelSearchLayer) {
 			return strncmp(thing->getString(), "Filters", 7) == 0;
 		})->removeFromParentAndCleanup(true);
 
-		log::info("yeah!");
+		//log::info("yeah!");
 
-		/*findFirstChildRecursive<CCLabelBMFont>(this, [](CCLabelBMFont* thing) {
+		findFirstChildRecursive<CCLabelBMFont>(this, [](CCLabelBMFont* thing) {
 			return strncmp(thing->getString(), "Quick Search", 12) == 0;
 		})->removeFromParentAndCleanup(true);
 
@@ -63,19 +63,27 @@ class $(MySearchLayer, LevelSearchLayer) {
 		challenge_button->setPosition(reinterpret_cast<CCNode*>(menu->getChildren()->objectAtIndex(1))->getPosition() + ccp(0, 35));
 
 		menu->addChild(demon_button);
-		menu->addChild(challenge_button);*/
+		menu->addChild(challenge_button);
 
 		return true;
 	}
 
 	void onDemonList(CCObject*) {
 		m_searchInput->onClickTrackNode(false);
-		LevelBrowserLayer::scene(this->getSearchObject(static_cast<SearchType>(3141), ""));
+		auto p = LevelBrowserLayer::create(this->getSearchObject(static_cast<SearchType>(3141), ""));
+
+		auto s = CCScene::create();
+		s->addChild(p);
+		CCDirector::sharedDirector()->replaceScene(CCTransitionFade::create(0.5, s));
 	}
 
 	void onChallengeList(CCObject*) {
 		m_searchInput->onClickTrackNode(false);
-		LevelBrowserLayer::scene(this->getSearchObject(static_cast<SearchType>(3142), ""));
+		auto p = LevelBrowserLayer::create(this->getSearchObject(static_cast<SearchType>(3142), ""));
+
+		auto s = CCScene::create();
+		s->addChild(p);
+		CCDirector::sharedDirector()->replaceScene(CCTransitionFade::create(0.5, s));
 	}
 };
 

@@ -22,9 +22,13 @@ if(${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_CURRENT_SOURCE_DIR})
 	add_subdirectory($ENV{GEODE_SDK} $ENV{GEODE_SDK}/build)
 endif()
 
+#set(CMAKE_OSX_DEPLOYMENT_TARGET 10.9)
+#SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mmacosx-version-min=10.7”)
 
 # Set up the mod binary
 add_library(${PROJECT_NAME} SHARED ${SOURCES})
+
+set_target_properties(${PROJECT_NAME} PROPERTIES OSX_DEPLOYMENT_TARGET 10.9)
 
 target_compile_options(${PROJECT_NAME} PUBLIC -ftime-trace)
 
