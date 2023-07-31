@@ -88,7 +88,7 @@ class $(MySearchLayer, LevelSearchLayer) {
 };
 
 class $(GameLevelManager) {
-	void ProcessHttpRequest(gd::string gdurl, gd::string gdquery, gd::string idk, int type) {
+	void ProcessHttpRequest(gd::string gdurl, gd::string gdquery, gd::string idk, GJHttpType type) {
 		std::string url(gdurl);
 		std::string query(gdquery);
 

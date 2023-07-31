@@ -20,9 +20,6 @@ class $(MyPlayLayer, PlayLayer) {
 		if (g_startPoses.empty() || m_isPracticeMode)
 			return;
 
-		log::debug(g_startPosIndex);
-
-
 		if (increment) {
 			g_startPosIndex++;
 		} else {
