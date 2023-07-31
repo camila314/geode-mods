@@ -24,7 +24,7 @@ jobs:
           
         - name: "macOS"
           bin_folder: "macos"
-          os: macos-11
+          os: macos-latest
           extra_flags: ""
           out_paths: './build/*/*.dylib'
           platform_suffix: 'mac'
