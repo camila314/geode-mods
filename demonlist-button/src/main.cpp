@@ -1,5 +1,6 @@
 #include <Geode/modify/LevelSearchLayer.hpp>
 #include <Geode/modify/GameLevelManager.hpp>
+#include <Geode/Geode.hpp>
 
 USE_GEODE_NAMESPACE();
 using namespace cocos2d;
