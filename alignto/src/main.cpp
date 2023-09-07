@@ -1,12 +1,9 @@
-#include "Geode/cocos/CCDirector.h"
-#include "Geode/cocos/label_nodes/CCLabelBMFont.h"
-#include "Geode/cocos/layers_scenes_transitions_nodes/CCLayer.h"
-#include "ccTypes.h"
 #include <Geode/Geode.hpp>
 #include <Geode/Modify.hpp>
 #include <Geode/Utils.hpp>
+#include <UIBuilder.hpp>
 
-USE_GEODE_NAMESPACE();
+using namespace geode::prelude;
 using namespace geode::cocos;
 
 class AlignToLayer : public CCLayerColor {
@@ -26,15 +23,14 @@ class AlignToLayer : public CCLayerColor {
 	}
 
 	bool init() override {
-		auto label = CCLabelBMFont::create("Drag to create an alignment axis", "bigFont.fnt");
-		label->setPosition(CCDirector::sharedDirector()->getWinSize() / 2 + ccp(0, 130));
-		label->setScale(0.5);
-		addChild(label);
+		Build<CCLabelBMFont>::create("Drag to create an alignment axis", "bigFont.fnt")
+			.center()
+			.move(0, 130)
+			.scale(0.5)
+			.parent(this);
 
-		m_lineDrawer = CCDrawNode::create();
-		addChild(m_lineDrawer);
+		m_lineDrawer = Build<CCDrawNode>::create().parent(this);
 
-		registerWithTouchDispatcher();
 		CCDirector::sharedDirector()->getTouchDispatcher()->incrementForcePrio(2);
 		setTouchEnabled(true);
 		setTouchMode(cocos2d::kCCTouchesOneByOne);
@@ -71,32 +67,25 @@ class AlignToLayer : public CCLayerColor {
 };
 
 class $(MyPauseLayer, EditorPauseLayer) {
-	void customSetup() {
-		EditorPauseLayer::customSetup();
+	bool init(LevelEditorLayer* lel) {
+		EditorPauseLayer::init(lel);
 
-		auto ch = findFirstChildRecursive<ButtonSprite>(this, [](ButtonSprite* btn) {
-			return strcmp(btn->m_label->getString(), "AlignX") == 0;
-		})->getParent();
+		auto btn = Build<ButtonSprite>::create("Align To", 30, 0, 0.4, true, "bigFont.fnt", "GJ_button_04.png", 30.0)
+			.intoMenuItem([=](auto) {
+				auto objs = EditorUI::get()->m_selectedObjects;
 
-		log::info("{}", ch->getParent()->convertToWorldSpace(ch->getPosition()));
+				if (objs->count() > 0) {
+					this->onExit();
+					this->removeMeAndCleanup();
 
-		auto sprite = ButtonSprite::create("Align To", 30, 0, 0.4, true, "bigFont.fnt", "GJ_button_04.png", 30.0);
+					LevelEditorLayer::get()->addChild(AlignToLayer::create(), 9999999);
+				}
+			}).collect();
 
-		auto mitem = CCMenuItemSpriteExtra::create(sprite, sprite, this, menu_selector(MyPauseLayer::onAlignTo));
-		mitem->addChild(sprite);
-		mitem->setPosition(ch->getPosition() + ccp(0, 35));
+		auto ch = getChildByID("small-actions-menu");
+		ch->insertBefore(btn, ch->getChildByID("align-x-button"));
+		ch->updateLayout();
 
-		ch->getParent()->addChild(mitem);
-	}
-
-	void onAlignTo(CCObject*) {
-		auto objs = EditorUI::get()->m_selectedObjects;
-
-		if (objs->count() > 0) {
-			this->onExit();
-			this->removeMeAndCleanup();
-
-			LevelEditorLayer::get()->addChild(AlignToLayer::create(), 9999999);
-		}
+		return true;
 	}
 };

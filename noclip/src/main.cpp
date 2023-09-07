@@ -1,6 +1,6 @@
 #include <Geode/modify/PlayLayer.hpp>
 
-USE_GEODE_NAMESPACE();
+using namespace geode::prelude;
 
 class $(PlayLayer) {
 	void destroyPlayer(PlayerObject*, GameObject*) {}
