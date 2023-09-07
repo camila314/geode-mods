@@ -1,9 +1,10 @@
-//#include <Geode/Geode.hpp>
-#include <Geode/Modify.hpp>
+#include <Geode/Geode.hpp>
+#include <Geode/Modify/PlayLayer.hpp>
+#include <Geode/Modify/UILayer.hpp>
+#include <Geode/Modify/PauseLayer.hpp>
 #include <vector>
 
-USE_GEODE_NAMESPACE();
-
+using namespace geode::prelude;
 using namespace cocos2d;
 
 std::vector<std::pair<StartPosObject*, CCPoint>> g_startPoses;
