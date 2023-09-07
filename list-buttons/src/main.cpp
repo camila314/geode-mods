@@ -60,7 +60,7 @@ class $(LevelSearchLayer) {
 };
 
 class $(GameLevelManager) {
-	void ProcessHttpRequest(gd::string gdurl, gd::string gdquery, gd::string idk, GJHttpType type) {
+	void ProcessHttpRequest(gd::string gdurl, gd::string gdquery, gd::string unk, GJHttpType type) {
 		std::string url(gdurl);
 		std::string query(gdquery);
 
@@ -73,6 +73,6 @@ class $(GameLevelManager) {
 			}
 		}
 
-		GameLevelManager::ProcessHttpRequest(url, query, idk, type);
+		GameLevelManager::ProcessHttpRequest(url, query, unk, type);
 	}
 };
